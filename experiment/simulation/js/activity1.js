@@ -6,7 +6,7 @@ var scene;
 var rect;
 var cc = (document.getElementById('pannelcreate'));
 var pp = new Pannel(cc);
-// pp.addoffcanvas(3);
+pp.addoffcanvas(3);
 var act1_btn = document.createElement('div');
 act1_btn.innerHTML = `<button id="panel1_btn" class="btn btn-primary" onclick="move_to_activity3()">Next</button>`;
 var act1_start_button = document.createElement('div');
@@ -106,14 +106,14 @@ function a1_canvas_mapping() {
     context.scale(1, -1);
 }
 function a1_draw_all_components() {
-    var sq = new Chemistry.Custome_image(battery, new Chemistry.Point(100, 150), 1200, 100, canvas);
-    sq.name = 'battery';
+    var sq = new Chemistry.Custome_image(voltmeter, new Chemistry.Point(300, 500), 194 * 1.2, 203 * 1.2, canvas);
+    sq.name = 'Voltmeter';
     scene.add(sq);
-    var sq = new Chemistry.Custome_image(bjt, new Chemistry.Point(900, 450), 160, 128, canvas);
-    sq.name = 'bjt';
+    var sq = new Chemistry.Custome_image(light_source, new Chemistry.Point(900, 500), 187 * 1.6, 117 * 1.6, canvas);
+    sq.name = 'Light source';
     scene.add(sq);
-    var sq = new Chemistry.Custome_image(vm_and_am, new Chemistry.Point(1300, 750), 550, 250, canvas);
-    sq.name = 'vm_and_am';
+    var sq = new Chemistry.Custome_image(photo_tube, new Chemistry.Point(1500, 500), 433 * 1.2, 119 * 1.2, canvas);
+    sq.name = 'Photo tube';
     scene.add(sq);
 }
 //list of all activity 1 questions
@@ -122,25 +122,25 @@ function a1_load_questions() { }
     question = [];
     question.push({
         srno: 1,
-        question: "Select <span style='color: #018fc3'>Battery</span>",
-        ans: 'battery',
+        question: "Select <span style='color: #018fc3'>voltmeter</span>",
+        ans: 'Voltmeter',
         hint: [
             'has positive and negative poles',
-            'power source',
-            'Triangular Base',
+            'has display',
+            'square in shape',
         ],
     });
     question.push({
         srno: 2,
-        question: "Select <span style='color: #018fc3'> BJT </span>",
-        ans: 'bjt',
+        question: "Select <span style='color: #018fc3'> light source </span>",
+        ans: 'Light source',
         hint: ['Device with 3 terminals', '', ''],
     });
     question.push({
         srno: 3,
-        question: "Select <span style='color: #018fc3'> Voltmeters and Ammeters </span>",
-        ans: 'vm_and_am',
-        hint: ['Used for measuring voltage and current', '', ''],
+        question: "Select <span style='color: #018fc3'> photo tube </span>",
+        ans: 'Photo tube',
+        hint: ['rectangular in shape', '', ''],
     });
 }
 function a1_display_current_question() {
@@ -168,14 +168,14 @@ function a1_display_current_question() {
 }
 function load_higlighted_images() {
     highlighted_images = [
-        [battery, battery],
-        [bjt, bjt],
-        [vm_and_am, vm_and_am]
+        [voltmeter, voltmeter],
+        [light_source, light_source],
+        [photo_tube, photo_tube],
     ];
     a1_labels = [
-        new Chemistry.Text('battery', new Chemistry.Point(800, 150), canvas),
-        new Chemistry.Text('bjt', new Chemistry.Point(1100, 450), canvas),
-        new Chemistry.Text('vm_and_am', new Chemistry.Point(1300, 750), canvas)
+        new Chemistry.Text('Voltmeter', new Chemistry.Point(250, 300), canvas),
+        new Chemistry.Text('Light source', new Chemistry.Point(800, 350), canvas),
+        new Chemistry.Text('Photo tube', new Chemistry.Point(1400, 400), canvas),
     ];
 }
 function a1_random_questions() {
@@ -341,5 +341,5 @@ function a1_mouseclick(e) {
     let y = Math.round((canvas.height - (e.clientY - rect.y)) / lscale);
     a1_check_isinside(x, y);
 }
-// activity1();
+activity1();
 //# sourceMappingURL=activity1.js.map

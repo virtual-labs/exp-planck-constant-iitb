@@ -1,9 +1,7 @@
-
 declare var Chart;
 
 let inp_ib_y: number[] = [];
 let inp_vbe_x: number[] = [];
-
 
 let out_ic_y: number[] = [];
 let out_vce_x: number[] = [];
@@ -18,16 +16,16 @@ function activity4() {
 	pp.clearleftpannel();
 	pp.clearrightpannel();
 	pp.addoffcanvas(3);
-	
-
 
 	pp.showtitle(
 		`<p id="exp-title" style='width: 23vw;'>Study the Plot</span><p>`,
 		3
 	);
 
-	pp.showdescription(`<div style="background-color: #f4ccccff; border-radius: 10px; border: black; padding: 5%; font-weight: 500; font-size: 17px;">Here we will study the plot to analyse Input and Output Characteristics </div>` , 3);
-
+	pp.showdescription(
+		`<div style="background-color: #f4ccccff; border-radius: 10px; border: black; padding: 5%; font-weight: 500; font-size: 17px;">Here we will study the plot to analyse Input and Output Characteristics </div>`,
+		3
+	);
 
 	var bsOffcanvas = new bootstrap.Offcanvas(
 		document.getElementById('offcanvasRight3')
@@ -75,15 +73,12 @@ function activity4() {
 	// add canvas sizing
 	// window.onload = a2_windowresize;
 	// window.onresize = a2_windowresize;
-   
+
 	a4_windowresize();
 
+	sort_data();
+	plot_input();
 
-    sort_data();
-    plot_input();
-
-
-   
 	//load_colors();
 
 	// window.addEventListener('click', (event) => a3_mouseclick(event));
@@ -98,7 +93,6 @@ function a4_windowresize() {
 
 	//draw scene
 	//scene.draw();
-
 }
 
 function a4_canvas_size() {
@@ -110,123 +104,107 @@ function a4_canvas_size() {
 	document.getElementById('leftpannel').style.margin = '0';
 }
 
-
 function a4_canvas_mapping() {
 	context.translate(0, canvas.height);
 	context.scale(1, -1);
 }
 
-
-
-
-
-
 function sort_data() {
-    if(obs_table.length <= 1) {
-        return;
-    }
+	if (obs_table.length <= 1) {
+		return;
+	}
 
-    // Traverse through all array elements
+	// Traverse through all array elements
 	for (let i = 0; i < obs_table.length - 1; i++) {
-    
 		for (let j = 0; j < obs_table.length - 1 - i; j++) {
 			// Swap if element is greater than next index
-			if (obs_table[j][3] > obs_table[j+1][3]) {
-            	//[obs_table[i][3], obs_table[j+1][3]] = [obs_table[j+1][3], obs_table[i][3]];
+			if (obs_table[j][3] > obs_table[j + 1][3]) {
+				//[obs_table[i][3], obs_table[j+1][3]] = [obs_table[j+1][3], obs_table[i][3]];
 
-                var temp = obs_table[j][3];
-                obs_table[j][3] = obs_table[j + 1][3];
-                obs_table[j + 1][3] = temp;
+				var temp = obs_table[j][3];
+				obs_table[j][3] = obs_table[j + 1][3];
+				obs_table[j + 1][3] = temp;
 
-                
-                if(obs_table[i][4] == 5) {
-                    obs_table[i][4] = null;
-                }
+				if (obs_table[i][4] == 5) {
+					obs_table[i][4] = null;
+				}
 
-                if(obs_table[j+1][4] == 5) {
-                    obs_table[j+1][4] = null;
-                }
+				if (obs_table[j + 1][4] == 5) {
+					obs_table[j + 1][4] = null;
+				}
 
-
-                var temp2 = obs_table[j][4];
-                obs_table[j][4] = obs_table[j + 1][4];
-                obs_table[j + 1][4] = temp2;
+				var temp2 = obs_table[j][4];
+				obs_table[j][4] = obs_table[j + 1][4];
+				obs_table[j + 1][4] = temp2;
 			}
 		}
 	}
 
+	for (let i = 0; i < obs_table.length - 1; i++) {
+		sorted_freq.push(obs_table[i][3]);
+		sorted_voltage.push(-obs_table[i][4]);
+	}
 
-    for(let i=0; i < obs_table.length - 1; i++) {
-        sorted_freq.push(obs_table[i][3]);
-        sorted_voltage.push(-obs_table[i][4]);
-    }
-
-    sorted_freq.unshift(0);
-    sorted_voltage.unshift(-sim_data[0][5 + selected_metal]);
+	sorted_freq.unshift(0);
+	sorted_voltage.unshift(-sim_data[0][5 + selected_metal]);
 }
 
+function plot_input() {
+	var ctx = document.getElementById('my-canvas1');
+	ctx.style.backgroundColor = 'white';
 
-function plot_input(){
-    var ctx = document.getElementById('my-canvas1');
-    ctx.style.backgroundColor = "white";
-   
-    ctx.style.borderRadius = "8px";
-    if(typeof chart!='undefined')
-    {
-        chart.destroy();
-    }
-    
-    var chart = new Chart(ctx, {
-        type: 'scatter',
-        data: {
-        labels: sorted_freq,
-        datasets:  [{
-            label: 'Voltage',
-            data: sorted_voltage,
-            fill: false,
-            borderColor: 'blue',
-            tension: 0.5,
-            showLine: true
-            // yAxisID: 'A',
-            // borderWidth: 1,
-            // borderColor: "green",
-            // backgroundColor: "rgba(34, 139, 34, 0.5)",
-        }]
+	ctx.style.borderRadius = '8px';
+	if (typeof chart != 'undefined') {
+		chart.destroy();
+	}
 
-        },
-        options: {
-            maintainAspectRatio: false,
-            scales: {
-              y: {
-                title: {
-                    display: true,
-                    text: 'Voltage',
-                    font:{size:14,weight:'bold'}
-                  }
-              },
-              x: {
-                title: {
-                    display: true,
-                    text: 'Frequency',
-                    font:{size:14,weight:'bold'}
-                  }
-              }
-            
-            },
-            plugins: {
-                title: {
-                  display: true,
-                  text: `Frequency Vs Voltage`,
-                  font: {size: 18},
-                },
-                legend:{labels:{font:{size:14,weight:'bold'}}}
-            },
-        }
-    });
-    
+	var chart = new Chart(ctx, {
+		type: 'scatter',
+		data: {
+			labels: sorted_freq,
+			datasets: [
+				{
+					label: 'Voltage',
+					data: sorted_voltage,
+					fill: false,
+					borderColor: 'blue',
+					tension: 0.5,
+					showLine: true,
+					// yAxisID: 'A',
+					// borderWidth: 1,
+					// borderColor: "green",
+					// backgroundColor: "rgba(34, 139, 34, 0.5)",
+				},
+			],
+		},
+		options: {
+			maintainAspectRatio: false,
+			scales: {
+				y: {
+					title: {
+						display: true,
+						text: 'Voltage',
+						font: { size: 14, weight: 'bold' },
+					},
+				},
+				x: {
+					title: {
+						display: true,
+						text: 'Frequency',
+						font: { size: 14, weight: 'bold' },
+					},
+				},
+			},
+			plugins: {
+				title: {
+					display: true,
+					text: `Frequency Vs Voltage`,
+					font: { size: 18 },
+				},
+				legend: { labels: { font: { size: 14, weight: 'bold' } } },
+			},
+		},
+	});
 }
 
-
-
-
-activity4();
+// activity4();
