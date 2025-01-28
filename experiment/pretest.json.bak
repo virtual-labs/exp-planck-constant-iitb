@@ -1,0 +1,48 @@
+[
+
+    {
+        "question": "What is Planck’s constant denoted by?",
+        "qid": 1,
+        "option_a": "c",
+        "option_b": "e",
+        "option_c": "h",
+        "option_d": "μ₀",
+        "correct_option": "c"
+    },
+    {
+        "question": "What phenomenon does the photoelectric effect refer to?",
+        "qid": 2,
+        "option_a": "Emission of electrons from a metal when it is heated",
+        "option_b": "Emission of photons from a radioactive substance",
+        "option_c": "Emission of electrons from a metal when light is shone on it",
+        "option_d": "Absorption of heat by a conductor",
+        "correct_option": "c"
+    },
+    {
+        "question": "What is the stopping potential in a photoelectric experiment?",
+        "qid": 3,
+        "option_a": "The potential difference needed to accelerate electrons",
+        "option_b": "The voltage required to stop the most energetic photoelectrons",
+        "option_c": "The potential that causes a metal to emit electrons",
+        "option_d": "The current applied to the metal",
+        "correct_option": "b"
+    },
+    {
+        "question": "What is the relationship between energy (E) and frequency (ν) of a photon?",
+        "qid": 4,
+        "option_a": " E = c/ν",
+        "option_b": "E = hν",
+        "option_c": "E = eν",
+        "option_d": "E = ν/h",
+        "correct_option": "b"
+    },
+    {
+        "question": "What property of the light must be above a certain threshold to emit photoelectrons?",
+        "qid": 5,
+        "option_a": "Intensity",
+        "option_b": "Frequency",
+        "option_c": " Wavelength",
+        "option_d": "Color",
+        "correct_option": "b"
+    }
+]

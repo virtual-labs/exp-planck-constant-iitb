@@ -111,8 +111,8 @@ function sort_data() {
 }
 function plot_input() {
     var ctx = document.getElementById('my-canvas1');
-    ctx.style.backgroundColor = "white";
-    ctx.style.borderRadius = "8px";
+    ctx.style.backgroundColor = 'white';
+    ctx.style.borderRadius = '8px';
     if (typeof chart != 'undefined') {
         chart.destroy();
     }
@@ -120,18 +120,16 @@ function plot_input() {
         type: 'scatter',
         data: {
             labels: sorted_freq,
-            datasets: [{
+            datasets: [
+                {
                     label: 'Voltage',
                     data: sorted_voltage,
                     fill: false,
                     borderColor: 'blue',
                     tension: 0.5,
-                    showLine: true
-                    // yAxisID: 'A',
-                    // borderWidth: 1,
-                    // borderColor: "green",
-                    // backgroundColor: "rgba(34, 139, 34, 0.5)",
-                }]
+                    showLine: true,
+                },
+            ],
         },
         options: {
             maintainAspectRatio: false,
@@ -140,16 +138,16 @@ function plot_input() {
                     title: {
                         display: true,
                         text: 'Voltage',
-                        font: { size: 14, weight: 'bold' }
-                    }
+                        font: { size: 14, weight: 'bold' },
+                    },
                 },
                 x: {
                     title: {
                         display: true,
                         text: 'Frequency',
-                        font: { size: 14, weight: 'bold' }
-                    }
-                }
+                        font: { size: 14, weight: 'bold' },
+                    },
+                },
             },
             plugins: {
                 title: {
@@ -157,10 +155,10 @@ function plot_input() {
                     text: `Frequency Vs Voltage`,
                     font: { size: 18 },
                 },
-                legend: { labels: { font: { size: 14, weight: 'bold' } } }
+                legend: { labels: { font: { size: 14, weight: 'bold' } } },
             },
-        }
+        },
     });
 }
-activity4();
+// activity4();
 //# sourceMappingURL=activity4.js.map

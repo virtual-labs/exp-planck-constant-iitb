@@ -1,0 +1,48 @@
+[
+
+    {
+        "question": "Which part of the photoelectric experiment helps to determine Planck’s constant?",
+        "qid": 1,
+        "option_a": "The measurement of emitted heat",
+        "option_b": "The plot of stopping potential vs. frequency",
+        "option_c": "The intensity of light used",
+        "option_d": "The color of the filter used",
+        "correct_option": "b"
+    },
+    {
+        "question": "What is the work function of a metal?",
+        "qid": 2,
+        "option_a": "The energy needed to create an electric field",
+        "option_b": "The minimum energy required to release an electron from the surface",
+        "option_c": "The energy required to accelerate an electron",
+        "option_d": "The total energy emitted as light",
+        "correct_option": "b"
+    },
+    {
+        "question": "Why do photoelectrons have different kinetic energies?",
+        "qid": 3,
+        "option_a": "Due to the varying distance of electrons from the nucleus",
+        "option_b": "Due to different light colors",
+        "option_c": "Because of energy absorbed from light with different frequencies",
+        "option_d": "Because of varying light intensities",
+        "correct_option": "a"
+    },
+    {
+        "question": "What does the intercept on the y-axis represent in a plot of stopping potential vs. frequency?",
+        "qid": 4,
+        "option_a": "The threshold frequency",
+        "option_b": "Planck’s constant",
+        "option_c": "The work function",
+        "option_d": "The acceleration due to gravity",
+        "correct_option": "c"
+    },
+    {
+        "question": "How is the energy of a photon calculated in this experiment?",
+        "qid": 5,
+        "option_a": "By multiplying the stopping potential by the charge of an electron",
+        "option_b": "By dividing the frequency by the wavelength",
+        "option_c": "By taking the square of the frequency",
+        "option_d": "By subtracting the work function from the total energy",
+        "correct_option": "a"
+    }
+]

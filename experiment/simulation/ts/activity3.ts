@@ -21,7 +21,6 @@ let obs_index = 0;
 let record_btn: HTMLButtonElement;
 let offcanvas4_content: HTMLDivElement;
 
-
 function activity3() {
 	pp.clearleftpannel();
 	pp.clearrightpannel();
@@ -33,7 +32,6 @@ function activity3() {
 
 	customize_canvas4();
 
-
 	pp.showtitle(
 		`<p id="exp-title" style='width: 23vw;'>Input Characteristics Observations</span><p>`,
 		3
@@ -44,8 +42,10 @@ function activity3() {
 		4
 	);
 
-	pp.showdescription(`<div style="background-color: #f4ccccff; border-radius: 10px; border: black; padding: 5%; font-weight: 500; font-size: 17px;">1. Select the metal <br>2. Click on start <br>3. Vary frequency and applied voltage <br> -When Add Reading button is green take reading <br> - Reapeat the process from point <br> 4. If there is no emission of electrons input value 5 volts for stopping potential </div>` , 3);
-
+	pp.showdescription(
+		`<div style="background-color: #f4ccccff; border-radius: 10px; border: black; padding: 5%; font-weight: 500; font-size: 17px;">1. Select the metal <br>2. Click on start <br>3. Vary frequency and applied voltage <br> -When Add Reading button is green take reading <br> - Reapeat the process from point <br> 4. If there is no emission of electrons input value 5 volts for stopping potential </div>`,
+		3
+	);
 
 	var bsOffcanvas = new bootstrap.Offcanvas(
 		document.getElementById('offcanvasRight3')
@@ -113,7 +113,7 @@ function activity3() {
 	pp.addtoleftpannel(left_panel_text);
 
 	//define the canvas
-	pp.addcanvas('mycanvas');  
+	pp.addcanvas('mycanvas');
 	// pp.addtorightpannel(question_div_box, 3);
 	pp.showscore(0, 3);
 	canvas = pp.canvas;
@@ -167,9 +167,7 @@ function a2_windowresize() {
 
 	//draw scene
 	//scene.draw();
-
 }
-
 
 function a2_canvas_size() {
 	canvas.width = window.innerWidth * 0.91;
@@ -186,25 +184,36 @@ function a2_canvas_mapping() {
 }
 
 function customize_canvas4() {
-	let offcanvsbtn: HTMLButtonElement = <HTMLButtonElement> document.getElementsByClassName('offcanvasbtn')[1];
-	let offcanvsicon: HTMLButtonElement = <HTMLButtonElement> document.getElementsByClassName('bi bi-arrow-bar-left offcanvasicon')[1];
+	let offcanvsbtn: HTMLButtonElement = <HTMLButtonElement>(
+		document.getElementsByClassName('offcanvasbtn')[1]
+	);
+	let offcanvsicon: HTMLButtonElement = <HTMLButtonElement>(
+		document.getElementsByClassName('bi bi-arrow-bar-left offcanvasicon')[1]
+	);
 
 	offcanvsbtn.style.position = 'absolute';
 	offcanvsbtn.style.top = '5vw';
 	offcanvsicon.className = 'bi bi-table offcanvasicon';
-	let offcanvas4_body: HTMLDivElement = <HTMLDivElement> document.getElementById('offcanvasRight4');
+	let offcanvas4_body: HTMLDivElement = <HTMLDivElement>(
+		document.getElementById('offcanvasRight4')
+	);
 	offcanvas4_body.style.width = '70vw';
 
-	offcanvas4_content = <HTMLDivElement> document.getElementById('pannel4');
-
+	offcanvas4_content = <HTMLDivElement>document.getElementById('pannel4');
 }
 
 function select_metal() {
-	let ele_0: HTMLDivElement = <HTMLDivElement> document.getElementById('zero-step');
-	let ele_1: HTMLDivElement = <HTMLDivElement> document.getElementById('first-step');
-	let dd_ele: HTMLSelectElement = <HTMLSelectElement> document.getElementById('metal-dd');
+	let ele_0: HTMLDivElement = <HTMLDivElement>(
+		document.getElementById('zero-step')
+	);
+	let ele_1: HTMLDivElement = <HTMLDivElement>(
+		document.getElementById('first-step')
+	);
+	let dd_ele: HTMLSelectElement = <HTMLSelectElement>(
+		document.getElementById('metal-dd')
+	);
 
-	if(dd_ele.value == '') {
+	if (dd_ele.value == '') {
 		alert('You need to select metal to continue.');
 		return;
 	}
@@ -215,11 +224,16 @@ function select_metal() {
 	ele_1.style.display = 'block';
 }
 
-
 function use_setup() {
-	let ele_0: HTMLButtonElement = <HTMLButtonElement> document.getElementById('st-btn-1');
-	let ele_1: HTMLDivElement = <HTMLDivElement> document.getElementById('all-btn');
-	let ele_2: HTMLHeadingElement = <HTMLHeadingElement> document.getElementById('f-heading');
+	let ele_0: HTMLButtonElement = <HTMLButtonElement>(
+		document.getElementById('st-btn-1')
+	);
+	let ele_1: HTMLDivElement = <HTMLDivElement>(
+		document.getElementById('all-btn')
+	);
+	let ele_2: HTMLHeadingElement = <HTMLHeadingElement>(
+		document.getElementById('f-heading')
+	);
 
 	ele_0.style.display = 'none';
 	ele_2.style.display = 'none';
@@ -231,67 +245,79 @@ function use_setup() {
 }
 
 function set_voltage() {
-	let add_btn: HTMLInputElement = <HTMLInputElement> document.getElementById('add-reading');
+	let add_btn: HTMLInputElement = <HTMLInputElement>(
+		document.getElementById('add-reading')
+	);
 	add_btn.className = 'btn btn-success';
 	add_btn.disabled = true;
-	let slider: HTMLInputElement = <HTMLInputElement> document.getElementById('set-voltage');
-	current_voltage = parseFloat((parseFloat(slider.value)).toFixed(2));
+	let slider: HTMLInputElement = <HTMLInputElement>(
+		document.getElementById('set-voltage')
+	);
+	current_voltage = parseFloat(parseFloat(slider.value).toFixed(2));
 	update_display(current_voltage, current_freq);
 }
 
 function inc_freq() {
-	let add_btn: HTMLInputElement = <HTMLInputElement> document.getElementById('add-reading');
+	let add_btn: HTMLInputElement = <HTMLInputElement>(
+		document.getElementById('add-reading')
+	);
 	add_btn.className = 'btn btn-success';
 	add_btn.disabled = true;
-	
+
 	current_i++;
 
-	if(current_i < 7) {
+	if (current_i < 7) {
 		current_freq = sim_data[current_i][4];
 		update_display(current_voltage, current_freq);
 	} else {
 		current_i--;
 	}
-
 }
 
 function dec_freq() {
-	let add_btn: HTMLInputElement = <HTMLInputElement> document.getElementById('add-reading');
+	let add_btn: HTMLInputElement = <HTMLInputElement>(
+		document.getElementById('add-reading')
+	);
 	add_btn.className = 'btn btn-success';
 	add_btn.disabled = true;
-	
+
 	current_i--;
 
-	if(current_i > -1) {
+	if (current_i > -1) {
 		current_freq = sim_data[current_i][4];
 		update_display(current_voltage, current_freq);
 	} else {
 		current_i++;
 	}
-
 }
 
 function update_display(voltage, frequency) {
-	let v_dsp: HTMLInputElement = <HTMLInputElement> document.getElementById('frequency-dsp');
+	let v_dsp: HTMLInputElement = <HTMLInputElement>(
+		document.getElementById('frequency-dsp')
+	);
 
-	let f_dsp: HTMLInputElement = <HTMLInputElement> document.getElementById('voltage-dsp');
-	let add_btn: HTMLInputElement = <HTMLInputElement> document.getElementById('add-reading');
+	let f_dsp: HTMLInputElement = <HTMLInputElement>(
+		document.getElementById('voltage-dsp')
+	);
+	let add_btn: HTMLInputElement = <HTMLInputElement>(
+		document.getElementById('add-reading')
+	);
 
-	if(!voltage || !frequency) {
-		alert("No emission of electrons"); 		
+	if (!voltage || !frequency) {
+		alert('No emission of electrons');
 		return;
 	} else {
-		v_dsp.value = 'Stopping Potential: ' + voltage + " v";
-		f_dsp.value = 'Frequency: ' + (frequency/1e12) + " THz";
+		v_dsp.value = 'Stopping Potential: ' + voltage + ' v';
+		f_dsp.value = 'Frequency: ' + frequency / 1e12 + ' THz';
 	}
 
-	if(current_voltage < -(sim_data[current_i][8 + selected_metal])) {
+	if (current_voltage < -sim_data[current_i][8 + selected_metal]) {
 		add_btn.className = 'btn btn-success';
 		add_btn.disabled = false;
 		return;
 	}
 
-	if((!sim_data[current_i][8 + selected_metal])) {
+	if (!sim_data[current_i][8 + selected_metal]) {
 		add_btn.className = 'btn btn-success';
 		add_btn.disabled = false;
 		return;
@@ -299,62 +325,101 @@ function update_display(voltage, frequency) {
 
 	add_btn.className = 'btn btn-success';
 	add_btn.disabled = true;
-
 }
 
 function load_obs_table() {
+	let header = [
+		`Sr no.`,
+		`Color`,
+		`&labmda; (nm)`,
+		'frequency (Thz)',
+		'Stopping Potential (Volts)',
+	];
 
-	let header = [`Sr no.`, `Color`, `&labmda; (nm)`, 'frequency (Thz)', 'Stopping Potential (Volts)'];
-
-    
-	let tab = new Verify_Rows_Cols_Custom_Fixed_Update1(header, obs_table, [0], [[4]], '', offcanvas4_content, true, true, () => {}, 5);
-
+	let tab = new Verify_Rows_Cols_Custom_Fixed_Update1(
+		header,
+		obs_table,
+		[0],
+		[[4]],
+		'',
+		offcanvas4_content,
+		true,
+		true,
+		() => {},
+		5
+	);
 
 	tab.load_table();
 }
 
 function add_readings_in_obs() {
-	let header = [`Sr no.`, `Color`, `&labmda; (nm)`, 'frequency (Thz)', 'Stopping Potential (Volts)'];
+	let header = [
+		`Sr no.`,
+		`Color`,
+		`&labmda; (nm)`,
+		'frequency (Thz)',
+		'Stopping Potential (Volts)',
+	];
 
 	offcanvas4_content.innerHTML = '';
 
-	if(obs_index == 0) {
+	if (obs_index == 0) {
 		obs_table = [];
 	}
 
-	if(current_i > 4) {
-		alert("There is no emission of electrons for this value, Click add reading if you want to add this reading.")
+	if (current_i > 4) {
+		alert(
+			'There is no emission of electrons for this value, Click add reading if you want to add this reading.'
+		);
 	}
 
 	// check for duplicate entries
-	for(let i=0; i<sim_data.length; i++) {
-		if(sim_data[current_i][2] == obs_table[1]) {
-			alert('You have already taken reading for the same frequency value');
+	for (let i = 0; i < sim_data.length; i++) {
+		if (sim_data[current_i][2] == obs_table[1]) {
+			alert(
+				'You have already taken reading for the same frequency value'
+			);
 			return;
 		}
 	}
-	
 
-	let arr = [obs_index+1, sim_data[current_i][2], sim_data[current_i][3], parseInt((sim_data[current_i][4]/1e12).toFixed(0)), sim_data[current_i][8 + selected_metal] != null ? current_voltage : 5];
+	let arr = [
+		obs_index + 1,
+		sim_data[current_i][2],
+		sim_data[current_i][3],
+		parseInt((sim_data[current_i][4] / 1e12).toFixed(0)),
+		sim_data[current_i][8 + selected_metal] != null ? current_voltage : 5,
+	];
 
 	obs_table.push(arr);
-    
-	let tab = new Verify_Rows_Cols_Custom_Fixed_Update1(header, obs_table, [obs_index], [[4]], '', offcanvas4_content, true, true, () => {
 
-		let add_btn: HTMLInputElement = <HTMLInputElement> document.getElementById('add-reading');
-		add_btn.className = 'btn btn-success';
-		add_btn.disabled = false;
+	let tab = new Verify_Rows_Cols_Custom_Fixed_Update1(
+		header,
+		obs_table,
+		[obs_index],
+		[[4]],
+		'',
+		offcanvas4_content,
+		true,
+		true,
+		() => {
+			let add_btn: HTMLInputElement = <HTMLInputElement>(
+				document.getElementById('add-reading')
+			);
+			add_btn.className = 'btn btn-success';
+			add_btn.disabled = false;
 
-		var bsOffcanvas = new bootstrap.Offcanvas(
-			document.getElementById('offcanvasRight4')
-		);
-		bsOffcanvas.hide();
+			var bsOffcanvas = new bootstrap.Offcanvas(
+				document.getElementById('offcanvasRight4')
+			);
+			bsOffcanvas.hide();
 
-		if(obs_index == 5) {
-			activity4();
-		}
-	}, 3);
-
+			if (obs_index == 5) {
+				activity4();
+			}
+		},
+		3
+	);
 
 	tab.load_table();
 
@@ -364,10 +429,6 @@ function add_readings_in_obs() {
 	bsOffcanvas.show();
 
 	obs_index++;
-
 }
-
-
-
 
 // activity3();
