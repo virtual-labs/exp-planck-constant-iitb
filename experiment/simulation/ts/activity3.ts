@@ -107,9 +107,9 @@ function activity3() {
 
 						<br> <br>
 
-						<span><button id ='i-plus' onclick='i_inc();' class='btn btn-dark' style='display: inline; width: 10vw; font-size: 1.2vw;'>Decrease Intensity</button></span>
+						<span><button id ='i-plus' onclick='i_dec();' class='btn btn-dark' style='display: inline; width: 10vw; font-size: 1.2vw;'>Decrease Intensity</button></span>
 
-						<span><button id ='i-minus' onclick='i_dec();' class='btn btn-dark' style='display: inline; width: 10vw; font-size: 1.2vw;'>Increase Intensity</button></span>
+						<span><button id ='i-minus' onclick='i_inc();' class='btn btn-dark' style='display: inline; width: 10vw; font-size: 1.2vw;'>Increase Intensity</button></span>
 
 						<br> <br>
 
