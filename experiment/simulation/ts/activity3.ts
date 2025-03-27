@@ -48,10 +48,10 @@ function activity3() {
 		3
 	);
 
-	// var bsOffcanvas = new bootstrap.Offcanvas(
-	// 	document.getElementById('offcanvasRight3')
-	// );
-	// bsOffcanvas.show();
+	var bsOffcanvas = new bootstrap.Offcanvas(
+		document.getElementById('offcanvasRight3')
+	);
+	bsOffcanvas.show();
 
 	let left_panel_text = `
          <div id='act3-left-content' style="position: absolute; font-size: 1.6vw;">

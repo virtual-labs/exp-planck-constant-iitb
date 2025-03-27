@@ -27,10 +27,8 @@ function activity3() {
     pp.showtitle(`<p id="exp-title" style='width: 23vw;'>Input Characteristics Observations</span><p>`, 3);
     pp.showtitle(`<p id="exp-title" style='width: 23vw;'>Observation Table</span><p>`, 4);
     pp.showdescription(`<div style="background-color: #f4ccccff; border-radius: 10px; border: black; padding: 5%; font-weight: 500; font-size: 17px;">1. Select the metal <br>2. Click on start <br>3. Vary frequency and applied voltage <br> -When the "Add Reading button" turns green, take the reading <br> - Repeat the process from step 3 <br> 4. If there is no emission of electrons, input value 5 volts as the stopping potential. <br> <span style='color: red;'> Note: You need to take total 5 observations to proceed further </span> </div>`, 3);
-    // var bsOffcanvas = new bootstrap.Offcanvas(
-    // 	document.getElementById('offcanvasRight3')
-    // );
-    // bsOffcanvas.show();
+    var bsOffcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvasRight3'));
+    bsOffcanvas.show();
     let left_panel_text = `
          <div id='act3-left-content' style="position: absolute; font-size: 1.6vw;">
 
