@@ -122,7 +122,7 @@ function plot_input() {
             labels: sorted_freq,
             datasets: [
                 {
-                    label: 'Voltage',
+                    label: 'Voltage (Volts)',
                     data: sorted_voltage,
                     fill: false,
                     borderColor: 'blue',
@@ -137,14 +137,14 @@ function plot_input() {
                 y: {
                     title: {
                         display: true,
-                        text: 'Voltage',
+                        text: 'Voltage (Volts)',
                         font: { size: 14, weight: 'bold' },
                     },
                 },
                 x: {
                     title: {
                         display: true,
-                        text: 'Frequency',
+                        text: 'Frequency (THz)',
                         font: { size: 14, weight: 'bold' },
                     },
                 },
