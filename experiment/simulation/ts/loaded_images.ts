@@ -6,4 +6,4 @@ var light_source = new Image();
 light_source.src = './images/components/light_source.png';
 
 var photo_tube = new Image();
-photo_tube.src = './images/components/photo_tube.png';
+photo_tube.src = './images/components/photo_tube.webp';
